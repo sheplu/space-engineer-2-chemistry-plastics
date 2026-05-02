@@ -1,0 +1,26 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-05-02",
+  "game": {
+    "name": "Space Engineers 2",
+    "stage": "Early Access",
+    "dataAsOf": "2026-05-02"
+  },
+  "mod": {
+    "name": "Chemistry & Plastics",
+    "version": "0.1.0"
+  },
+  "notes": "Machine-readable index of every dataset in this mod. Adds three craftable items (monomer, plastic, composite plastic) and ships zero new blocks — crafting is handled by vanilla Smelter 2.5 m (monomer, plastic) and Assembler 5 m (composite plastic), matching the Backpack Upgrades precedent of a block-less mod. SCOPE BOUNDARY: this repo is 'chemistry & plastics' — polymer-chain only. Adjacent chemistry domains (solvents, adhesives, synthetic fuels, fibers, ceramics) belong in separate mods, not here. FIRST MOD WITH CROSS-MOD ID REFERENCES: monomer's recipes reach into Forestry's `resin` and Petroleum Power's `gasoline` ids, so the validator walks those sibling repos (graceful skip when absent, same pattern as BASE_GAME_REPO). Plastic and composite plastic ship with `usedIn: []` and a `dataGaps` note — no current mod consumes them; future Electronics / Packaging / Food / Clothing mods are expected to reference these ids by name.",
+  "totalEntries": 3,
+  "datasets": [
+    {
+      "id": "items",
+      "path": "data/items.json",
+      "category": "components",
+      "subcategory": "chemistry",
+      "description": "Monomer (Smelter intermediate, dual bio/petro feedstock), Plastic (Smelter bulk soft material), Composite Plastic (Assembler reinforced rigid material).",
+      "version": "0.1.0",
+      "entryCount": 3
+    }
+  ]
+}

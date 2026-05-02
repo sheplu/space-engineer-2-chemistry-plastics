@@ -1,0 +1,102 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-05-02",
+  "game": {
+    "name": "Space Engineers 2",
+    "stage": "Early Access",
+    "dataAsOf": "2026-05-02"
+  },
+  "mod": {
+    "name": "Chemistry & Plastics",
+    "version": "0.1.0",
+    "baseGameDataVersion": "1.1.0"
+  },
+  "sources": [],
+  "notes": "Three-tier polymer chain. Monomer is the convergence point: both Forestry's resin (bio path, polylactic-acid analogue) and Petroleum Power's gasoline (petro path, naphtha-cracking analogue) land here before branching into plastic → composite plastic. Monomer and plastic are Smelter 2.5 m outputs (simple tier, matching vanilla Steel Plate / Steel Tube). Composite plastic is an Assembler 5 m output (complex tier, matching vanilla Heavy-Duty Plate / Pressure Pipe) and mixes plastic with vanilla Steel Tube for industrial rigidity. Plastic and composite plastic ship with usedIn: [] — no existing mod consumes them; they are machine-discoverable forward hooks for future Electronics, Packaging, Food-container, and Clothing mods. Monomer has usedIn: [\"Plastic\"] since Plastic is an in-mod consumer. Energy intent: the bio path (resin) is the lower-throughput, renewable route; the petro path (gasoline) is the higher-throughput, non-renewable route. v0.1 treats them as interchangeable — balance tuning deferred.",
+  "resources": [
+    {
+      "id": "monomer",
+      "displayName": "Monomer",
+      "type": "simple_component",
+      "mass_kg": 2,
+      "volume_liters": null,
+      "stackable": true,
+      "divisible": false,
+      "description": "Low-molecular-weight organic compound — the feedstock that polymerizes into plastic. Produced by cracking gasoline (petrochemical route, Petroleum Power) or thermally processing resin (biological route, Forestry). The two paths are chemically distinct in the real world (naphtha cracking vs resin distillation) but functionally interchangeable here: both yield a stackable Smelter output that combines into plastic. Not a finished material on its own — intended strictly as a crafting intermediate.",
+      "gameStatus": "active",
+      "recipes": [
+        {
+          "producedBy": "Smelter 2.5 m",
+          "ingredients": [{ "id": "resin", "qty": 2 }],
+          "producesQty": 1,
+          "craftingTimeSeconds": 0.5
+        },
+        {
+          "producedBy": "Smelter 2.5 m",
+          "ingredients": [{ "id": "gasoline", "qty": 1 }],
+          "producesQty": 1,
+          "craftingTimeSeconds": 0.5
+        }
+      ],
+      "usedIn": ["Plastic"],
+      "wiki": "https://github.com/sheplu/space-engineer-2-chemistry-plastics",
+      "dataGaps": [
+        "volume_liters",
+        "balance-bio-vs-petro-path-yield"
+      ]
+    },
+    {
+      "id": "plastic",
+      "displayName": "Plastic",
+      "type": "simple_component",
+      "mass_kg": 1,
+      "volume_liters": null,
+      "stackable": true,
+      "divisible": false,
+      "description": "General-purpose polymer — the Steel Plate equivalent for non-structural soft-material uses. Real-world analogues: polyethylene, polypropylene. Intended downstream consumers (all forward-looking, none shipped yet): cable insulation, fluid/gas tank liners, container seals, medical consumables, clothing, food packaging. Two monomer units polymerize into one plastic at the Smelter 2.5 m — the 2:1 ratio matches real bulk polymerization (short-chain feedstock → long-chain polymer with volume loss from eliminated small molecules).",
+      "gameStatus": "active",
+      "recipes": [
+        {
+          "producedBy": "Smelter 2.5 m",
+          "ingredients": [{ "id": "monomer", "qty": 2 }],
+          "producesQty": 1,
+          "craftingTimeSeconds": 0.4
+        }
+      ],
+      "usedIn": [],
+      "wiki": "https://github.com/sheplu/space-engineer-2-chemistry-plastics",
+      "dataGaps": [
+        "volume_liters",
+        "usedIn-empty-until-electronics-packaging-or-clothing-mod-ships"
+      ]
+    },
+    {
+      "id": "composite_plastic",
+      "displayName": "Composite Plastic",
+      "type": "complex_component",
+      "mass_kg": 4,
+      "volume_liters": null,
+      "stackable": true,
+      "divisible": false,
+      "description": "Rigid reinforced polymer — the Steel Tube equivalent for industrial housings and enclosures. Real-world analogues: glass-fiber-reinforced plastic, carbon-fiber composite, ABS-over-metal-frame. Combines plastic with a vanilla Steel Tube skeleton for structural integrity that soft plastic cannot provide on its own. Intended downstream consumers (all forward-looking, none shipped yet): electronics housings, tank shells, high-tech component bodies, pressure-resistant casings. Assembler 5 m recipe mirrors vanilla complex-component conventions (single simple + single complex ingredient, ~2s craft).",
+      "gameStatus": "active",
+      "recipes": [
+        {
+          "producedBy": "Assembler 5 m",
+          "ingredients": [
+            { "id": "plastic", "qty": 2 },
+            { "id": "steel_tube", "qty": 1 }
+          ],
+          "producesQty": 1,
+          "craftingTimeSeconds": 2.0
+        }
+      ],
+      "usedIn": [],
+      "wiki": "https://github.com/sheplu/space-engineer-2-chemistry-plastics",
+      "dataGaps": [
+        "volume_liters",
+        "usedIn-empty-until-electronics-packaging-or-clothing-mod-ships"
+      ]
+    }
+  ]
+}
